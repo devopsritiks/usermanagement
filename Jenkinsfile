@@ -10,7 +10,7 @@ pipeline {
 
         stage('Checkout') { steps { checkout scm } }
         stage('Maven Build') { steps { sh 'mvn -B clean package -DskipTests' } }
-        stage('Docker Build') { steps { sh "docker build -t ${DIL} ."} }
+        stage('Docker Build') { steps { sh "sudo docker build -t ${DIL} ."} }
         stage('Docker Push') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials',
