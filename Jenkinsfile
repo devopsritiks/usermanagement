@@ -17,7 +17,7 @@ pipeline {
                 usernameVariable: 'DH_USER',
                 passwordVariable: 'DH_PASS')]) {
                     sh '''
-                        echo "$DH_PASS" | docker login -u "DH_USER" --password-stdin
+                        echo "$DH_PASS" | docker login -u "$DH_USER" --password-stdin
                         docker tag usermanagement-application-image:latest "$DH_USER"/usermanagement:latest
                         docker push "$DH_USER"/usermanagement:latest
                         docker logout
